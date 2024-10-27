@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General styling */
+        body {
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Header */
+        header {
+            background-color: #0e2238;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: sticky;
+            /* Makes the header sticky */
+            top: 0;
+            /* Stick to the top */
+            /* Background color for visibility */
+            padding: 20px;
+            /* Padding around header content */
+            text-align: center;
+            /* Center-align header text */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Shadow for depth */
+            z-index: 700;
+            /* Keep the header above other content */
+        }
+
+        .logo img {
+            height: 40px;
+            max-width: 100%;
+        }
+
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 2rem;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover,
+        .back-home:hover {
+            color: #e73e3e;
+        }
+
+        /* Responsive Menu Icon */
+        .menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Grid for iframe content */
+        .iframe-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .large-item {
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: auto;
+            color: white;
+            max-width: 100%;
+        }
+
+        .large-item img {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+        }
+
+        .card-title, .card-text {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0e2238;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1120px) {
+            .card-text {
+                font-size: 12px;
+            }
+            .card-title {
+                font-size: 12px;
+            }
+        }
+        /* Media Queries for Cards */
+@media (max-width: 1120px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+    }
+    
+    .card-container img {
+        width: 80%; /* Adjust image width for medium screens */
+        height: auto;
+    }
+
+    .card-container div {
+        padding: 1rem; /* Reduce padding for text containers */
+    }
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        margin: 1rem auto; /* Reduce margin for smaller screens */
+    }
+    
+    .card-container img {
+        width: 100%; /* Full width on smaller screens */
+        height: auto;
+    }
+
+    .card-title {
+        font-size: 28px; /* Smaller font size for titles */
+    }
+
+    .card-text {
+        font-size: 14px; /* Smaller font size for text */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        margin: 0.5rem auto; /* Further reduce margin */
+    }
+
+    .card-title {
+        font-size: 24px; /* Further reduce title font size */
+    }
+
+    .card-text {
+        font-size: 12px; /* Further reduce text font size */
+    }
+
+    .card-container div {
+        padding: 0.5rem; /* Further reduce padding for text containers */
+    }
+}
+
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 0.8rem;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                padding: 1rem;
+                max-height: 0;
+            }
+
+            nav ul.show {
+                display: flex;
+                max-height: 300px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .iframe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .large-item {
+                grid-column: 1 / span 2;
+                grid-row: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+
+            .iframe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .large-item {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .card-container {
+                flex-direction: column;
+            }
+
+            .card-container img {
+                width: 100%;
+                height: auto;
+            }
+
+            .card-container div {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://doshiimpex.in/assets/images/di_logo.png" alt="Doshi Impex Logo">
+            </a>
+        </div>
+        <nav>
+            <div class="menu-icon" aria-label="Toggle navigation menu" onclick="toggleMenu()">&#9776;</div>
+            <ul>
+                <li><a href="./index.html">HOME</a></li>
+                <li><a href="./about.html">ABOUT</a></li>
+                <li><a href="./highjewelry.html">HIGH JEWELRY</a></li>
+                <li><a href="./offerings.html">OFFERINGS</a></li>
+                <li><a href="./values.html">VALUES</a></li>
+                <li><a href="./career.html">CAREERS</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 style="text-align: center; margin-top: 20px;">Values</h1>
+        <p style="padding: 50px;font-size:1.5rem;"> Doshi Impex, we are committed to upholding the highest ethical standards in the diamond industry. We believe in absolute transparency with our clients, ensuring they have complete confidence in the quality and provenance of our diamonds. We respect the supply chain and are dedicated to ethical sourcing practices, ensuring that every diamond we trade is conflict-free.</p>
+        <hr  width="95%" style="margin: auto;">
+        <section>
+            <div>
+                <h2 class="heading" onclick="toggleContent('content1')" style="cursor: pointer;margin:30px">Our Team and Partners</h2>
+                <div class="content" id="content1" style="margin: 30px; font-size: 1.2rem;">
+                    <p>Our roots in Gujarat are a source of immense pride for us. The rich cultural heritage of this region is infused into every aspect of our business, from the way we source our diamonds to the craftsmanship that goes into creating our jewelry. Our artisans in Gujarat use age-old techniques combined with modern innovation to create pieces that are not only beautiful but also steeped in tradition.</p>
+                </div>
+            </div>
+            <hr width="95%" style="margin: auto;">
+            <div>
+                <h2 class="heading" onclick="toggleContent('content2')" style="cursor: pointer;margin: 30px;">Heritage and Craftsmanship</h2>
+                <div class="content" id="content2" style="margin: 30px; font-size: 1.2rem; ">
+                    <p>Doshi Impex is more than just a diamond trading company; it is a testament to the enduring legacy of craftsmanship and ethical business practices. We are dedicated to providing our clients with the finest diamonds and high jewelry, crafted with passion and precision. Whether you are seeking a unique diamond for an engagement ring or a bespoke piece of high jewelry, Doshi Impex promises to deliver brilliance, beauty, and integrity in every creation.
+
+                        Discover the world of Doshi Impex, where every diamond tells a story, and every piece of jewelry is a work of art.</p>
+                </div>
+            </div>
+            <hr  width="95%" style="margin: auto;">
+            <div>
+                <h2 class="heading" onclick="toggleContent('content3')" style="cursor: pointer;margin:30px">Quality and Innovation</h2>
+                <div class="content" id="content3" style="margin: 30px; font-size: 1.2rem;">
+                    <p>The success of Doshi Impex is built on the dedication and expertise of a diverse team and our valued partners. We work with a range of third-party consultants who assist in polishing our diamonds and manufacturing our exquisite jewelry. These experts are carefully selected for their skill, reliability, and adherence to our high standards of quality.
+
+                        Our internal staff, a blend of seasoned professionals and passionate newcomers, play a crucial role in maintaining our operations and ensuring that every client receives exceptional service. From sourcing and quality control to customer relations and technological integration, our team works tirelessly to uphold the Doshi Impex standard.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background-color: #0e2238; color: white;">
+        <h1 style="margin: 0;">&copy; 2024 Doshi Impex. All rights reserved.</h1>
+        <a href="#" onclick="scrollToTop()" style="display: flex; align-items: center;">
+            <img src="./assets/back-to-top.png" alt="Back to Top" style="width: 40px; height: auto;background-color: white;">
+        </a>
+    </footer>
+  
+
+    <script>
+        function toggleMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('show');
+        }
+        function scrollToTop(duration = 1000) { 
+    const start = window.scrollY; 
+    const startTime = performance.now(); 
+
+    function animation(currentTime) {
+        const elapsedTime = currentTime - startTime; 
+        const progress = Math.min(elapsedTime / duration, 1); 
+
+        const easing = progress < 0.5 
+            ? 4 * progress * progress * progress 
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+        window.scrollTo(0, start * (1 - easing)); 
+
+        if (elapsedTime < duration) {
+            requestAnimationFrame(animation); 
+        }
+    }
+
+    requestAnimationFrame(animation); 
+}
+function toggleContent(contentId) {
+            const allContent = document.querySelectorAll('.content');
+            allContent.forEach(content => {
+                if (content.id === contentId) {
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

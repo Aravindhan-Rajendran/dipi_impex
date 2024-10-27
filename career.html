@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General styling */
+        body {
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Header */
+        header {
+            background-color: #0e2238;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: sticky;
+            /* Makes the header sticky */
+            top: 0;
+            /* Stick to the top */
+            /* Background color for visibility */
+            padding: 20px;
+            /* Padding around header content */
+            text-align: center;
+            /* Center-align header text */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Shadow for depth */
+            z-index: 700;
+            /* Keep the header above other content */
+            margin-bottom: 50px;
+        }
+
+        .logo img {
+            height: 40px;
+            max-width: 100%;
+        }
+
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 2rem;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover,
+        .back-home:hover {
+            color: #e73e3e;
+        }
+
+        /* Responsive Menu Icon */
+        .menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Grid for iframe content */
+        .iframe-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .large-item {
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: auto;
+            color: white;
+            max-width: 100%;
+        }
+
+        .large-item img {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+        }
+
+        .card-title,
+        .card-text {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0e2238;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        /* General styling */
+body {
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Header, Footer, and Other Styles (Keep your existing styles here) */
+
+/* Contact Form Styles */
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.contact-form {
+    width: 90%;
+    max-width: 1300px;
+    background-color: rgb(236, 236, 236);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* First Row: Name and Email */
+.contact-form input {
+    width: 48%;
+    height: 50px;
+    padding: 5px;
+    border: none;
+}
+
+/* Text Area */
+.contact-form textarea {
+    width: 100%;
+    height: 300px;
+    padding: 5px;
+    border: none;
+}
+
+/* Send Message Button */
+.contact-form button {
+    width: 100%;
+    height: 50px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .contact-form input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .contact-form textarea {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+    }
+
+    .contact-form textarea {
+        height: 200px;
+    }
+
+    .contact-form button {
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form input,
+    .contact-form textarea {
+        height: 35px;
+        padding: 8px;
+    }
+
+    .contact-form button {
+        height: 35px;
+    }
+}
+
+
+        /* Media Queries */
+        @media (max-width: 1120px) {
+            .card-text {
+                font-size: 12px;
+            }
+
+            .card-title {
+                font-size: 12px;
+            }
+        }
+
+        /* Media Queries for Cards */
+        @media (max-width: 1120px) {
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+            }
+
+            .card-container img {
+                width: 80%;
+                /* Adjust image width for medium screens */
+                height: auto;
+            }
+
+            .card-container div {
+                padding: 1rem;
+                /* Reduce padding for text containers */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                margin: 1rem auto;
+                /* Reduce margin for smaller screens */
+            }
+
+            .card-container img {
+                width: 100%;
+                /* Full width on smaller screens */
+                height: auto;
+            }
+
+            .card-title {
+                font-size: 28px;
+                /* Smaller font size for titles */
+            }
+
+            .card-text {
+                font-size: 14px;
+                /* Smaller font size for text */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-container {
+                margin: 0.5rem auto;
+                /* Further reduce margin */
+            }
+
+            .card-title {
+                font-size: 24px;
+                /* Further reduce title font size */
+            }
+
+            .card-text {
+                font-size: 12px;
+                /* Further reduce text font size */
+            }
+
+            .card-container div {
+                padding: 0.5rem;
+                /* Further reduce padding for text containers */
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 0.8rem;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                padding: 1rem;
+                max-height: 0;
+            }
+
+            nav ul.show {
+                display: flex;
+                max-height: 300px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .iframe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .large-item {
+                grid-column: 1 / span 2;
+                grid-row: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+
+            .iframe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .large-item {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .card-container {
+                flex-direction: column;
+            }
+
+            .card-container img {
+                width: 100%;
+                height: auto;
+            }
+
+            .card-container div {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #0e2238;">
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://doshiimpex.in/assets/images/di_logo.png" alt="Doshi Impex Logo">
+            </a>
+        </div>
+        <nav>
+            <div class="menu-icon" aria-label="Toggle navigation menu" onclick="toggleMenu()">&#9776;</div>
+            <ul>
+                <li><a href="./index.html">HOME</a></li>
+                <li><a href="./about.html">ABOUT</a></li>
+                <li><a href="./highjewelry.html">HIGH JEWELRY</a></li>
+                <li><a href="./offerings.html">OFFERINGS</a></li>
+                <li><a href="./values.html">VALUES</a></li>
+                <li><a href="./career.html">CAREERS</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="background-color: white;margin-top: 50px;">
+        <section>
+            <div style="display: flex;justify-content: center;align-items: center;"> 
+                <div style="width: 1300px;height: 150px;display: flex;justify-content: center;">
+                    <div style="width: 100%; max-width: 750px; height: auto; padding: 10px;">
+                        <h2 style="color: orange; text-align: center; font-size: 1.5em;">Careers at Doshi Impex</h2>
+                        <p style="font-size: 1em; text-align: justify; line-height: 1.5;">
+                            At Doshi Impex, we believe that our greatest asset is our people. We are always on the lookout for talented, passionate individuals who share our commitment to excellence and ethical practices. Doshi Impex offers a dynamic and supportive environment where you can grow and thrive. Our team members have the opportunity to work with some of the finest diamonds and high jewelry in the world.
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div style="display:flex;justify-content:center;align-items:center;">
+                <div style="width: 1300px; height: 500px; background-color: rgb(236, 236, 236); padding: 20px;">
+                    <!-- First Row: Name and Email -->
+                    <div style="width: 100%; display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <input type="text" placeholder="*Your Name" style="width: 48%; height: 50px; padding: 5px; border: none;">
+                        <input type="text" placeholder="*Email Address" style="width: 48%; height: 50px; padding: 5px; border: none;">
+                    </div>
+                    <!-- Second Row: Text Area -->
+                    <div style="width: 100%; margin-bottom: 20px;">
+                        <textarea placeholder="Type Message here" style="width: 100%; height: 300px; padding: 5px;border: none;"></textarea>
+                    </div>
+                    <!-- Third Row: Send Message Button -->
+                    <div style="width: 100%;">
+                        <button type="button" style="width: 100%; height: 50px; background-color: #0e2238; color: white; border: none; cursor: pointer;">SEND MESSAGE</button>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer
+        style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background-color: #0e2238; color: white;">
+        <h1 style="margin: 0;">&copy; 2024 Doshi Impex. All rights reserved.</h1>
+        <a href="#" onclick="scrollToTop()" style="display: flex; align-items: center;">
+            <img src="./assets/back-to-top.png" alt="Back to Top"
+                style="width: 40px; height: auto;background-color: white;">
+        </a>
+    </footer>
+
+
+    <script>
+        function toggleMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('show');
+        }
+        function scrollToTop(duration = 1000) {
+            const start = window.scrollY;
+            const startTime = performance.now();
+
+            function animation(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+
+                const easing = progress < 0.5
+                    ? 4 * progress * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+                window.scrollTo(0, start * (1 - easing));
+
+                if (elapsedTime < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+    </script>
+</body>
+
+</html>

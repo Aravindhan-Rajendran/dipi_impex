@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General styling */
+        body {
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Header */
+        header {
+            background-color: #0e2238;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: sticky;
+            /* Makes the header sticky */
+            top: 0;
+            /* Stick to the top */
+            /* Background color for visibility */
+            padding: 20px;
+            /* Padding around header content */
+            text-align: center;
+            /* Center-align header text */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Shadow for depth */
+            z-index: 700;
+            /* Keep the header above other content */
+        }
+
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 2rem;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover,
+        .back-home:hover {
+            color: #e73e3e;
+        }
+
+        /* Responsive Menu Icon */
+        .menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Grid for iframe content */
+        .iframe-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .large-item {
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: auto;
+            color: white;
+            max-width: 100%;
+        }
+
+        .large-item img {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+        }
+
+        .card-title,
+        .card-text {
+            font-family: 'Roboto', sans-serif;
+        }
+        .logo {
+            margin-right: auto;
+        }
+
+        .logo img {
+            height: 40px;
+            max-width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0e2238;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: end;
+            width: 100%;
+            height: 200px;
+        }
+
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Card container */
+        .card-container {
+            display: flex;
+            width: 80%;
+            margin: 2rem auto;
+            overflow: hidden;
+        }
+
+        .card-container img {
+            width: 50%;
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover;
+        }
+
+        .card-container div {
+            width: 50%;
+            padding: 2rem;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 0.8rem;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                padding: 1rem;
+                max-height: 0;
+            }
+            .mains{
+                height: 300px;
+            }
+            .imgs{
+                height: 300px;
+            }
+
+            nav ul.show {
+                display: flex;
+                max-height: 300px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .picture {
+                height: 200px;
+            }
+
+            .iframe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .large-item {
+                grid-column: 1 / span 2;
+                grid-row: 1;
+            }
+        }
+
+        /* Additional Media Queries for Cards */
+        @media (max-width: 768px) {
+            .card-container {
+                flex-direction: column; /* Stack cards vertically */
+                width: 90%; /* Adjust card width */
+                margin: 1rem auto; /* Center cards */
+            }
+
+            .card-container img {
+                width: 100%; /* Make card images responsive */
+                height: auto; /* Maintain aspect ratio */
+            }
+
+            .card-container div {
+                width: 100%; /* Make content divs full width */
+                padding: 1rem; /* Reduce padding */
+                text-align: center; /* Center text */
+            }
+
+            h2 {
+                font-size: 32px; /* Adjust heading size */
+            }
+
+            p {
+                font-size: 14px; /* Adjust paragraph size */
+            }
+
+            a {
+                padding: 0.5rem 1rem; /* Adjust button padding */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-container {
+                width: 95%; /* Further adjust card width for smaller devices */
+                margin: 1rem auto; /* Center cards */
+            }
+
+            h2 {
+                font-size: 28px; /* Adjust heading size */
+            }
+
+            p {
+                font-size: 12px; /* Adjust paragraph size */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://doshiimpex.in/assets/images/di_logo.png" alt="Doshi Impex Logo">
+            </a>
+        </div>
+        <nav>
+            <div class="menu-icon" aria-label="Toggle navigation menu" onclick="toggleMenu()">&#9776;</div>
+            <ul>
+                <li><a href="./index.html">HOME</a></li>
+                <li><a href="./about.html">ABOUT</a></li>
+                <li><a href="./highjewelry.html">HIGH JEWELRY</a></li>
+                <li><a href="./offerings.html">OFFERINGS</a></li>
+                <li><a href="./values.html">VALUES</a></li>
+                <li><a href="./career.html">CAREERS</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div style="position: relative; width: 100%; height: 400px;">
+            <img src="https://doshiimpex.in/assets/images/about/craftman.png" alt="backs" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 160px; font-family: 'Italiana'; color: white;">FOUNDER</span>
+        </div>
+    
+        <!-- Card 1 -->
+        <div class="card-container">
+            <img src="https://doshiimpex.in/assets/images/about/about_1.png" alt="Card Image">
+            <div>
+                <h2 style="font-family: 'italiana', sans-serif; font-size: 64px; color: #29364e;">About Doshi</h2>
+                <p style="font-family: 'verdana', sans-serif; font-size: 16px; color: #212529;">
+                    Doshi Impex: A Legacy of Brilliance and Craftsmanship
+                    Welcome to Doshi Impex, a premier trading company specializing in the finest white polished and rough diamonds, as well as natural rare colored diamonds. Our bespoke offerings include high jewelry creations that reflect the exquisite artistry and heritage of Gujarat. Founded by Chetan Doshi, a second-generation visionary in the diamond industry.
+                </p>
+                <a href="#" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background-color: #0e2238; color: white; text-decoration: none; border-radius: 4px;">
+                    CONTACT US
+                </a>
+            </div>
+        </div>
+    
+        <!-- Card 2 -->
+        <div class="card-container">
+            <div>
+                <h2 style="font-family: 'italiana', sans-serif; font-size: 64px; color: #29364e;">Our Story</h2>
+                <p style="font-family: 'verdana', sans-serif; font-size: 16px; color: #212529;">
+                    Doshi Impex: A Legacy of Brilliance and Craftsmanship
+                    Welcome to Doshi Impex, a premier trading company specializing in the finest white polished and rough diamonds, as well as natural rare colored diamonds. Our bespoke offerings include high jewelry creations that reflect the exquisite artistry and heritage of Gujarat. Founded by Chetan Doshi, a second-generation visionary in the diamond industry, Doshi Impex is dedicated to delivering unparalleled quality and transparency to our esteemed clients.
+                </p>
+                <a href="#" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background-color: #0e2238; color: white; text-decoration: none; border-radius: 4px;">
+                    CONTACT US
+                </a>
+            </div>
+            <img src="https://doshiimpex.in/assets/images/about/about_2.png" alt="Card Image">
+        </div>
+    </main>
+    
+    <footer style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background-color: #0e2238; color: white;">
+        <h1 style="margin: 0;">&copy; 2024 Doshi Impex. All rights reserved.</h1>
+        <a href="#" onclick="scrollToTop()" style="display: flex; align-items: center;">
+            <img src="./assets/back-to-top.png" alt="Back to Top" style="width: 40px; height: auto;background-color: white;">
+        </a>
+    </footer>
+  
+
+    <script>
+        function toggleMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('show');
+        }
+        function scrollToTop(duration = 1000) { 
+    const start = window.scrollY; 
+    const startTime = performance.now(); 
+
+    function animation(currentTime) {
+        const elapsedTime = currentTime - startTime; 
+        const progress = Math.min(elapsedTime / duration, 1); 
+
+        const easing = progress < 0.5 
+            ? 4 * progress * progress * progress 
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+        window.scrollTo(0, start * (1 - easing)); 
+
+        if (elapsedTime < duration) {
+            requestAnimationFrame(animation); 
+        }
+    }
+
+    requestAnimationFrame(animation); 
+}
+
+    </script>
+</body>
+</html>

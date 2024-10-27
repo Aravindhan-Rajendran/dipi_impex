@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General styling */
+        body {
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: #0e2238;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: sticky;
+            /* Makes the header sticky */
+            top: 0;
+            /* Stick to the top */
+            /* Background color for visibility */
+            padding: 20px;
+            /* Padding around header content */
+            text-align: center;
+            /* Center-align header text */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Shadow for depth */
+            z-index: 700;
+            /* Keep the header above other content */
+        }
+
+        .logo {
+            margin-right: auto;
+        }
+
+        .logo img {
+            height: 40px;
+            max-width: 100%;
+        }
+
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 2rem;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-family: verdana, sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover,
+        .back-home:hover {
+            color: #e73e3e;
+        }
+
+        /* Responsive Menu Icon */
+        .menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main content */
+        main {
+            flex: 1;
+            padding: 2rem;
+            text-align: center;
+            width: 100%;
+            background-color: black;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .picture {
+            position: relative;
+            /* Allows positioning of the image within the div */
+            width: 100%;
+            /* Set to 100% to fit its container */
+            height: 400px;
+            /* Set a specific height or adjust as needed */
+            overflow: hidden;
+            /* Prevents overflow */
+        }
+
+        .picture .imgs {
+            position: absolute;
+            /* Absolute positioning for full coverage */
+            top: 50%;
+            /* Centers the image vertically */
+            left: 50%;
+            /* Centers the image horizontally */
+            width: 100%;
+            /* Sets width to 100% of the container */
+            height: auto;
+            /* Maintains aspect ratio */
+            min-width: 100%;
+            /* Ensures it covers the div */
+            min-height: 100%;
+            /* Ensures it covers the div */
+            transform: translate(-50%, -50%);
+            /* Center the image */
+            object-fit: cover;
+            /* Ensures the image covers the div */
+        }
+
+
+        /* Grid for iframe content */
+        .iframe-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .large-item {
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: auto;
+            color: white;
+            max-width: 100%;
+        }
+
+        .large-item img {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+        }
+
+        .card-title,
+        .card-text {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0e2238;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: end;
+            width: 100%;
+            height: 200px;
+        }
+
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1120px) {
+            .card-text {
+                font-size: 12px;
+            }
+
+            .card-title {
+                font-size: 12px;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 0.8rem;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                padding: 1rem;
+                max-height: 0;
+            }
+
+            .mains {
+                height: 300px;
+            }
+
+            .imgs {
+                height: 300px;
+            }
+
+            nav ul.show {
+                display: flex;
+                max-height: 300px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .picture {
+                height: 200px;
+            }
+
+            .iframe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .large-item {
+                grid-column: 1 / span 2;
+                grid-row: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+
+            .iframe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .large-item {
+                grid-column: 1;
+                grid-row: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://doshiimpex.in/assets/images/di_logo.png" alt="Doshi Impex Logo">
+            </a>
+        </div>
+        <nav>
+            <div class="menu-icon" aria-label="Toggle navigation menu" onclick="toggleMenu()">&#9776;</div>
+            <ul>
+                <li><a href="./index.html">HOME</a></li>
+                <li><a href="./about.html">ABOUT</a></li>
+                <li><a href="./highjewelry.html">HIGH JEWELRY</a></li>
+                <li><a href="./offerings.html">OFFERINGS</a></li>
+                <li><a href="./values.html">VALUES</a></li>
+                <li><a href="./career.html">CAREERS</a></li>
+                <li><a href="./contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="mains">
+        <section>
+            <div class="picture">
+                <img src="https://doshiimpex.in/assets/images/banner/banner.png" alt="Banner" class="imgs">
+            </div>
+        </section>
+    </main>
+
+    <section style="background-color: white;">
+        <h2 style="text-align:center;">Luxury - The Business of Fashion</h2>
+        <div class="iframe-grid">
+            <div class="large-item">
+                <a href="https://www.businessoffashion.com/briefings/retail/the-blocking-of-the-tapestry-capri-merger-spells-trouble-for-american-fashion/"
+                    style="text-decoration: none; color: white;" target="_blank">
+                    <div class="card bg-dark text-white" style="width: 100%; height: 100%; position: relative;">
+                        <img src="https://img.businessoffashion.com/resizer/v2/HZWYB7GZEZDNBP6ZT37OKOBIA4.png?auth=0622a34a54388204359f831cf11594c57ea0187a2835d674d3255a51227d9fd6&width=1440"
+                            alt="Tapestry-Capri Merger" class="card-img"
+                            style="width: 100%; height: 500px; object-fit: cover;">
+                        <div class="card-img-overlay"
+                            style="position: absolute; top: 0; left: 0; padding: 1rem; background-color: rgba(0, 0, 0, 0.5);">
+                            <h3 class="card-title" style="font-family: 'robato';">The Blocking of the Tapestry-Capri
+                                Merger Spells Trouble for American Fashion</h3>
+                            <p class="card-text" style="font-family: 'robato';">The dream of creating an American answer
+                                to LVMH and Kering faced a major setback this week after a federal judge championed the
+                                FTC’s narrow definition of the sub-luxury handbag market.</p>
+                            <p class="card-text" style="font-family: 'robato';">Last updated 3 mins ago</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="small-item">
+                <a href="https://www.businessoffashion.com/briefings/retail/the-blocking-of-the-tapestry-capri-merger-spells-trouble-for-american-fashion/"
+                    style="text-decoration: none; color: white;" target="_blank">
+                    <div class="card bg-dark text-white" style="width: 100%; height: 100%; position: relative;">
+                        <img src="https://img.businessoffashion.com/resizer/v2/PH4PAH5CYBH3FPHH7QGVS557KY.jpg?auth=b6643c1c62973520afc9d51ee7944e9c2f8bc7e84abcac709182e906491b5150&width=1440"
+                            alt="Tapestry-Capri Merger" class="card-img"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="card-img-overlay"
+                            style="position: absolute; top: 0; left: 0; padding: 1rem; background-color: rgba(0, 0, 0, 0.5); font-family: robato;">
+                            <h5 class="card-title">The Blocking of the Tapestry-Capri Merger Spells Trouble for American
+                                Fashion</h5>
+                            <p class="card-text">The dream of creating an American answer to LVMH and Kering faced a
+                                major setback this week after a federal judge supported the FTC’s definition of the
+                                sub-luxury handbag market.</p>
+                            <p class="card-text">Last updated 3 mins ago</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="small-item">
+                <a href="https://www.businessoffashion.com/briefings/retail/the-blocking-of-the-tapestry-capri-merger-spells-trouble-for-american-fashion/"
+                    style="text-decoration: none; color: white;" target="_blank">
+                    <div class="card bg-dark text-white" style="width: 100%; height: 100%; position: relative;">
+                        <img src="https://img.businessoffashion.com/resizer/v2/B3PZK63BTJAYRBC6PELOEKEYSE.jpg?auth=8df83c547f28ea82f7355509ded22b6796a71d67a4a0fcefc1ca673b2d1bd8e7&width=1440"
+                            alt="Tapestry-Capri Merger" class="card-img"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="card-img-overlay"
+                            style="position: absolute; top: 0; left: 0; padding: 1rem; background-color: rgba(0, 0, 0, 0.5); font-family: robato;">
+                            <h5 class="card-title">The Blocking of the Tapestry-Capri Merger Spells Trouble for American
+                                Fashion</h5>
+                            <p class="card-text">The dream of creating an American answer to LVMH and Kering faced a
+                                major setback this week after a federal judge supported the FTC’s definition of the
+                                sub-luxury handbag market.</p>
+                            <p class="card-text">Last updated 3 mins ago</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="small-item">
+                <a href="https://www.businessoffashion.com/news/china/western-brands-are-losing-more-ground-to-cheaper-chinese-rivals/"
+                    style="text-decoration: none; color: white;" target="_blank">
+                    <div class="card bg-dark text-white" style="width: 100%; height: 100%; position: relative;">
+                        <img src="https://img.businessoffashion.com/resizer/v2/JMKAZZU4JNC5HLEKPKTAW3V5FE.jpg?auth=e66d8cca28d53355bc512e4f376ecedc2c6198a7a68c31f0ab0231ab61469b58&width=1440"
+                            alt="Western Brands Losing Ground" class="card-img"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="card-img-overlay"
+                            style="position: absolute; top: 0; left: 0; padding: 1rem; background-color: rgba(0, 0, 0, 0.5); font-family: robato;">
+                            <h5 class="card-title">Western Brands Are Losing Ground to Cheaper Chinese Rivals</h5>
+                            <p class="card-text">As competition intensifies, several major brands struggle to maintain
+                                market share against affordable alternatives.</p>
+                            <p class="card-text">Last updated 3 mins ago</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="small-item">
+                <a href="https://www.businessoffashion.com/news/china/western-brands-are-losing-more-ground-to-cheaper-chinese-rivals/"
+                    style="text-decoration: none; color: white;" target="_blank">
+                    <div class="card bg-dark text-white" style="width: 100%; height: 100%; position: relative;">
+                        <img src="https://img.businessoffashion.com/resizer/v2/ESQX7I2GVJBNNKNAYBHUEXWKHY.jpg?auth=72c0c37342e2915e58b8b36ec32e28d6e02a090c63f8b3d426d87135d8d36f38&width=1440"
+                            alt="Western Brands Losing Ground" class="card-img"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="card-img-overlay"
+                            style="position: absolute; top: 0; left: 0; padding: 1rem; background-color: rgba(0, 0, 0, 0.5); font-family: robato;">
+                            <h5 class="card-title">Western Brands Are Losing Ground to Cheaper Chinese Rivals</h5>
+                            <p class="card-text">As competition intensifies, several major brands struggle to maintain
+                                market share against affordable alternatives.</p>
+                            <p class="card-text">Last updated 3 mins ago</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+    </section>
+    <footer
+        style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background-color: #0e2238; color: white;">
+        <h1 style="margin: 0;">&copy; 2024 Doshi Impex. All rights reserved.</h1>
+        <a href="#" onclick="scrollToTop()" style="display: flex; align-items: center;">
+            <img src="./assets/back-to-top.png" alt="Back to Top"
+                style="width: 40px; height: auto;background-color: white;">
+        </a>
+    </footer>
+
+
+    <script>
+        function toggleMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('show');
+        }
+        function scrollToTop(duration = 1000) {
+            const start = window.scrollY;
+            const startTime = performance.now();
+
+            function animation(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+
+                const easing = progress < 0.5
+                    ? 4 * progress * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+                window.scrollTo(0, start * (1 - easing));
+
+                if (elapsedTime < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+    </script>
+</body>
+
+</html>
